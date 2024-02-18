@@ -24,8 +24,6 @@ const HomePage = () => {
     const [stockError, setStockError] = useState(false);
 
     const onChange = (value, label, options, selectId) => {
-        console.log('changede', value, label, options, selectId);
-        console.log(data);
         if (value) {
             const newOptions = options.filter(item => item.id !== value);
             setSelects(s => s.map(data => {
@@ -41,14 +39,11 @@ const HomePage = () => {
     }
 
     const onClear = (item, selectId) => {
-        console.log(item, selectId);
         const newSelects = selects.map(data => {
             if (data.id === selectId) data.selectedItems = undefined;
             const x = [...data.options, item];
-            console.log(x);
             return { ...data, options: x }
         })
-        console.log(newSelects);
         setSelects(newSelects);
     }
 
@@ -87,10 +82,9 @@ const HomePage = () => {
     ])
 
     const counterValueControl = (select,totalCounterValue) => {
-        console.log(select,totalCounterValue);
         const itemCounterValue = select.selectedItems.counterValue;
         const selectedItemId = select.selectedItems.id;
-        console.log(itemCounterValue);
+   
         if(select.selectedItems.stok_adet > 0) {
             if(itemCounterValue > totalCounterValue) {
                 setStockError(true);
@@ -111,8 +105,6 @@ const HomePage = () => {
     }
 
     const counterChange = (type, select, e) => {
-        console.log(type, select,e);
-
         const selectedItemId = select.selectedItems.id;
 
         let totalCounterValue = 0;
@@ -131,13 +123,10 @@ const HomePage = () => {
             }
             return data;
         }))
-        console.log(select.selectedItems.counterValue);
         counterValueControl(select,totalCounterValue)
     }
 
     const changeBoxQuantity = (value, label, options, selectId, select) => {
-        console.log('box quantity', value, label, options, selectId, select);
-
         const selectedItemId = select.selectedItems.id;
 
         const newOptions = select.options.map(opt => {
@@ -155,8 +144,7 @@ const HomePage = () => {
     }
 
     const changeBackOrder = (select) => {
-        console.log(select);
-
+        
         const selectedItemId = select.selectedItems.id;
 
         const newOptions = select.options.map(opt => {
@@ -180,7 +168,7 @@ const HomePage = () => {
 
     //back order text area değişiminde item a ait olan texti güncelleme
     const changeBackOrderText = (e, select) => {
-        console.log('text area', select, e.target.value);
+      
         const textValue = e.target.value;
         const selectedItemId = select.selectedItems.id;
 
@@ -224,7 +212,6 @@ const HomePage = () => {
 
     const selectItemInfo = (select) => {
         if (select.selectedItems) {// seçili item var mı kontrolü
-            console.log('var', select.selectedItems);
             if (select.selectedItems.checkAddBox && select.selectedItems.selectedBoxQuantity) {
                 return (
                     <div className='select-item-info'>
@@ -260,12 +247,8 @@ const HomePage = () => {
 
     const exstraDataEntry = (select) => {
         if (select.selectedItems) {// seçili item var mı kontrolü
-            console.log('var', select.selectedItems);
-            console.log(select);
-
             let totalCounterValue = 0;
             select.selectedItems.m_stok_diger_bilgiler.map(data => totalCounterValue += data.stok_adet);
-            console.log('total', totalCounterValue);
             return (
 
                 <div className='select-extra-info'>
@@ -388,7 +371,7 @@ const HomePage = () => {
             setOpen(false);
         }, 2000);
     }
-    console.log(selects);
+    
     useEffect(() => {
         const option = async () => {
             const x = await datas.items.map(item => (
