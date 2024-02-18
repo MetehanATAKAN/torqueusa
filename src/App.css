@@ -1,38 +1,109 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.selects-info {
   display: flex;
   flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .basket {
+    cursor: pointer;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.select-item-info {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  width: max-content;
+  padding: 5px;
+  color: white;
+  background-color: green;
+  margin-top: 10px;
+}
+
+.no-stock {
+  background-color: red;
+}
+
+.selects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+
+.select-extra-info {
+  display: flex;
+
+  .counter {
+    margin-right: 5px;
+  }
+}
+
+.add-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.counter {
+  .ant-input-number-group-wrapper {
+    .ant-input-number-group-addon {
+      padding: 0;
+    }
+  }
+
+  .ant-input-number-wrapper {
+    width: 170px !important;
+  }
+}
+
+.basket {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+
+  .items-card-info {
+    border: 1px solid white;
+
+    .items-card-info-header {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      text-align: center;
+    }
+
+    .item-infos {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      text-align: center;
+      align-items: center;
+      margin-bottom: 40px;
+
+      .item-info-image {
+        margin: auto;
+      }
+    }
+  }
+
+  .total-card {
+    border: 1px solid white;
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .total-card-info {
+      padding: 10px 10px;
+      display: flex;
+      justify-content: space-between;
+      .total {
+        font-weight: bold;
+      }
+    }
+  }
+  .total-card-header {
+    font-weight: bolder;
   }
 }
